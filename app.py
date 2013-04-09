@@ -9,7 +9,6 @@ from collections import namedtuple
 
 #Files to include (from here)
 from utilities import facebook, DEBUG, SECRET_KEY, TrapErrors, Objects as O, OFFLINE, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET
-#from tipsData import buildTips
 
 #Setting up Data
 Crawl_Time = 2419200                 # 2419200 = 4 weeks in seconds
@@ -100,7 +99,7 @@ def index():
             db.session.commit()
 
             #Handling the base state of authenticated users
-            if 'CESD2' in user.testscores.keys():
+            if 'CESD1' in user.testscores.keys():
                 return render_template('returningUser.html', user = user)
             else:
                 return render_template('firstTime.html', user = user)
@@ -251,19 +250,12 @@ def admin():
             newdict['points'] = person.points
             try:    newdict['CESD1'] = person.testscore['CESD1'][0]
             except KeyError:    newdict['CESD1'] = ""
-            try:    newdict['CESD2'] = person.testscore['CESD2'][0]
-            except KeyError:    newdict['CESD2'] = ""
-            try:    newdict['CESD3'] = person.testscore['CESD3'][0]
-            except KeyError:    newdict['CESD3'] = ""
-            try:    newdict['PHQ9'] = person.testscore['PHQ9'][0]
-            except KeyError:    newdict['PHQ9'] = ""
             try:    newdict['BDI'] = person.testscore['BDI'][0]
             except KeyError:    newdict['BDI'] = ""
             newdict['tip'] = len(person.tip)
             newdict['accessTime'] = time.strftime("%y/%m/%d %H:%M:%S", time.gmtime(person.accessTime))
             usertable.append(newdict)
         return render_template('admin.html', user=userCache[sessionID], alluser=usertable, userID=str(userCache[sessionID].id))
-
 
 @app.route('/game')
 def game():
@@ -285,11 +277,11 @@ def test():
 
     #Gives the right test to the current user and stores the score
 
-    Tests = (O.Test('CESD1','ces-d.html',0), O.Test('CESD2','ces-d.html',0), O.Test('CESD3','ces-d.html',0), O.Test('BDI','bdi.html',4), O.Test('PHQ9','phq9.html',7))
+    Tests = (O.Test('CESD1','ces-d.html',0), O.Test('BDI','bdi.html',4))
     sessionID = get_facebook_oauth_token()
 
-    # currentTest = Tests[0]               # CES-D 1 :: ~ 19/02/2013
-    currentTest = Tests[1]
+    currentTest = Tests[0]                   # CES-D1: 2013.4. - 4.
+    # currentTest = Tests[1]
 
     if currentTest.name in userCache[sessionID].testscores.keys():
         return render_template('returningUser.html', user = userCache[sessionID])
@@ -413,10 +405,43 @@ def userSession():
     
     # after this part there should be identical user data in each memory, DB and cache.
 
-    if 'CESD2' in userCache[sessionID].testscores.keys():
+    if 'CESD1' in userCache[sessionID].testscores.keys():
         return render_template('returningUser.html', user=userCache[sessionID])
     else:
         return render_template('firstTime.html', user=userCache[sessionID])
+
+@app.route('/login/authorized')
+@facebook.authorized_handler
+def facebook_authorized(resp):
+    if resp is None:
+        return 'Access denied: reason=%s error=%s' % (
+            request.args['error_reason'],
+            request.args['error_description']
+        )
+
+    session['oauth_token'] = (resp['access_token'], '')
+
+    return redirect(url_for('userSession'))
+
+@facebook.tokengetter
+def get_facebook_oauth_token():
+    if OFFLINE:
+        return (u'Debug Mode', "")
+    try: 
+        return session.get('oauth_token')
+        # short_token = session.get('oauth_token')
+        # extended_token = get_extended_access_token(short_token, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET)
+        # return extended_token[0]
+        #### This code makes an internal servor error
+    except ValueError:
+        pass
+    return None
+
+if __name__ == '__main__':
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
 
 # def userSession():                                        # Old version
 #     sessionID = get_facebook_oauth_token()
@@ -577,35 +602,3 @@ def userSession():
 #         #Instantiate local user
 #         userCache[sessionID] = O.User(me.data['name'], me.data['id'], sessionID, time.time(), len(friends.data['data']), 1, me.data['locale'], 'control', {}, [], crawlData)
 #         return redirect(url_for('index'))
-
-@app.route('/login/authorized')
-@facebook.authorized_handler
-def facebook_authorized(resp):
-    if resp is None:
-        return 'Access denied: reason=%s error=%s' % (
-            request.args['error_reason'],
-            request.args['error_description']
-        )
-
-    session['oauth_token'] = (resp['access_token'], '')
-
-    return redirect(url_for('userSession'))
-
-@facebook.tokengetter
-def get_facebook_oauth_token():
-    if OFFLINE:
-        return (u'Debug Mode', "")
-    try: 
-        return session.get('oauth_token')
-        # short_token = session.get('oauth_token')
-        # extended_token = get_extended_access_token(short_token, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET)
-        # return extended_token[0]
-        #### This code makes an internal servor error
-    except ValueError:
-        pass
-    return None
-
-if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
