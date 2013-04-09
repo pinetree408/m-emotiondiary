@@ -9,7 +9,7 @@ from collections import namedtuple
 
 #Files to include (from here)
 from utilities import facebook, DEBUG, SECRET_KEY, TrapErrors, Objects as O, OFFLINE, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET
-from tipsData import buildTips
+#from tipsData import buildTips
 
 #Setting up Data
 Crawl_Time = 2419200                 # 2419200 = 4 weeks in seconds
