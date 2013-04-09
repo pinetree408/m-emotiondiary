@@ -1,0 +1,648 @@
+{% extends "test.html" %}
+
+{% block testTitleEN %}
+Center for Epidemiologic Studies Depression (CES-D) Scale
+{% endblock %}
+
+{% block testInstructionsEN %}
+<p>Below is a list of the ways you might have felt of behaved. Please tell me how often you have felt this way during the last week.</p>
+<ul>
+<li><strong>Rarely</strong> or none of the time (Less than one day)</li>
+<li><strong>Some</strong> or a little of the time (1-2 days)</li>
+<li><strong>Occasionally</strong> or a moderate amount of time (3-4 days)</li>
+<li><strong>Most</strong> or all of the time (5-7 days)</li>
+</ul>
+{% endblock %}
+
+{% block testFormEN %}
+<table>  
+<tr id="headerRow">
+  <td class="questionColm"><strong></strong></td>
+  <td class="ratingColm"><strong>Rarely</strong></td>
+  <td class="ratingColm"><strong>Some</strong></td>
+  <td class="ratingColm"><strong>Occasionally</strong></td>
+  <td class="ratingColm"><strong>Most</strong></td>
+</tr>
+  
+<tr class="questionRow">
+  <td class="questionColm">1. I was bothered by things that usually don't bother me.</td>
+  <td><input type="radio" name="var1" value="0"></td>
+  <td><input type="radio" name="var1" value="1"></td>
+  <td><input type="radio" name="var1" value="2"></td>
+  <td><input type="radio" name="var1" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">2. I did not feel like eating; my appetite was poor.</td>
+  <td><input type="radio" name="var2" value="0"></td>
+  <td><input type="radio" name="var2" value="1"></td>
+  <td><input type="radio" name="var2" value="2"></td>
+  <td><input type="radio" name="var2" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">3. I felt that I could not shake off the blues, even with help from my family or friends.</td>
+  <td><input type="radio" name="var3" value="0"></td>
+  <td><input type="radio" name="var3" value="1"></td>
+  <td><input type="radio" name="var3" value="2"></td>
+  <td><input type="radio" name="var3" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">4. I felt that I was just as good as other people.</td>
+  <td><input type="radio" name="var4" value="3"></td>
+  <td><input type="radio" name="var4" value="2"></td>
+  <td><input type="radio" name="var4" value="1"></td>
+  <td><input type="radio" name="var4" value="0"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">5. I had trouble keeping my mind on what I was doing.</td>
+  <td><input type="radio" name="var5" value="0"></td>
+  <td><input type="radio" name="var5" value="1"></td>
+  <td><input type="radio" name="var5" value="2"></td>
+  <td><input type="radio" name="var5" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">6. I felt depressed.</td>
+  <td><input type="radio" name="var6" value="0"></td>
+  <td><input type="radio" name="var6" value="1"></td>
+  <td><input type="radio" name="var6" value="2"></td>
+  <td><input type="radio" name="var6" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">7. I felt that everything I did was an effort.</td>
+  <td><input type="radio" name="var7" value="0"></td>
+  <td><input type="radio" name="var7" value="1"></td>
+  <td><input type="radio" name="var7" value="2"></td>
+  <td><input type="radio" name="var7" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">8. I felt hopeful about the future.</td>
+  <td><input type="radio" name="var8" value="3"></td>
+  <td><input type="radio" name="var8" value="2"></td>
+  <td><input type="radio" name="var8" value="1"></td>
+  <td><input type="radio" name="var8" value="0"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">9. I thought my life had been a failure.</td>
+  <td><input type="radio" name="var9" value="0"></td>
+  <td><input type="radio" name="var9" value="1"></td>
+  <td><input type="radio" name="var9" value="2"></td>
+  <td><input type="radio" name="var9" value="3"></td>
+</tr>
+
+    
+<tr class="questionRow">
+  <td class="questionColm">10. I felt fearful.</td>
+  <td><input type="radio" name="var10" value="0"></td>
+  <td><input type="radio" name="var10" value="1"></td>
+  <td><input type="radio" name="var10" value="2"></td>
+  <td><input type="radio" name="var10" value="3"></td>
+</tr>
+
+
+<tr id="headerRow">
+  <td class="questionColm"><strong></strong></td>
+  <td class="ratingColm"><strong>Rarely</strong></td>
+  <td class="ratingColm"><strong>Some</strong></td>
+  <td class="ratingColm"><strong>Occasionally</strong></td>
+  <td class="ratingColm"><strong>Most</strong></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">11. My sleep was restless.</td>
+  <td><input type="radio" name="var11" value="0"></td>
+  <td><input type="radio" name="var11" value="1"></td>
+  <td><input type="radio" name="var11" value="2"></td>
+  <td><input type="radio" name="var11" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">12. I was happy.</td>
+  <td><input type="radio" name="var12" value="3"></td>
+  <td><input type="radio" name="var12" value="2"></td>
+  <td><input type="radio" name="var12" value="1"></td>
+  <td><input type="radio" name="var12" value="0"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">13. I talked less than usual.</td>
+  <td><input type="radio" name="var13" value="0"></td>
+  <td><input type="radio" name="var13" value="1"></td>
+  <td><input type="radio" name="var13" value="2"></td>
+  <td><input type="radio" name="var13" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">14. I felt lonely.</td>
+  <td><input type="radio" name="var14" value="0"></td>
+  <td><input type="radio" name="var14" value="1"></td>
+  <td><input type="radio" name="var14" value="2"></td>
+  <td><input type="radio" name="var14" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">15. People were unfriendly.</td>
+  <td><input type="radio" name="var15" value="0"></td>
+  <td><input type="radio" name="var15" value="1"></td>
+  <td><input type="radio" name="var15" value="2"></td>
+  <td><input type="radio" name="var15" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">16. I enjoyed life.</td>
+  <td><input type="radio" name="var16" value="3"></td>
+  <td><input type="radio" name="var16" value="2"></td>
+  <td><input type="radio" name="var16" value="1"></td>
+  <td><input type="radio" name="var16" value="0"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">17. I had crying spells.</td>
+  <td><input type="radio" name="var17" value="0"></td>
+  <td><input type="radio" name="var17" value="1"></td>
+  <td><input type="radio" name="var17" value="2"></td>
+  <td><input type="radio" name="var17" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">18. I felt sad.</td>
+  <td><input type="radio" name="var18" value="0"></td>
+  <td><input type="radio" name="var18" value="1"></td>
+  <td><input type="radio" name="var18" value="2"></td>
+  <td><input type="radio" name="var18" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">19. I felt that people dislike me.</td>
+  <td><input type="radio" name="var19" value="0"></td>
+  <td><input type="radio" name="var19" value="1"></td>
+  <td><input type="radio" name="var19" value="2"></td>
+  <td><input type="radio" name="var19" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">20. I could not get going.</td>
+  <td><input type="radio" name="var20" value="0"></td>
+  <td><input type="radio" name="var20" value="1"></td>
+  <td><input type="radio" name="var20" value="2"></td>
+  <td><input type="radio" name="var20" value="3"></td>
+</tr>
+
+</table>
+{% endblock %}
+
+
+{% block testTitleKR %}
+우울증 자가진단표 (Center for Epidemiologic Studies Depression, CES-D)
+{% endblock %}
+
+{% block testInstructionsKR %}
+<p>아래에 적혀있는 문항을 잘 읽으신 후, 지난 1주 동안 본인이 느끼시고 행동한 것을 가장 잘 나타낸다고 생각되는 숫자에 체크하시기 바랍니다.</p>
+<ul>
+<li><strong>극히 드물게</strong>(1일 이하)</li>
+<li><strong>가끔</strong>(1~2일)</li>
+<li><strong>자주</strong>(3-4일)</li>
+<li><strong>거의 대부분</strong>(5-7일)</li>
+</ul>
+{% endblock %}
+
+{% block testFormKR %}
+<table>  
+<tr id="headerRow">
+  <td class="questionColm"><strong></strong></td>
+  <td class="ratingColm"><strong>극히 드물게</strong></td>
+  <td class="ratingColm"><strong>가끔</strong></td>
+  <td class="ratingColm"><strong>자주</strong></td>
+  <td class="ratingColm"><strong>거의 대부분</strong></td>
+</tr>
+  
+<tr class="questionRow">
+  <td class="questionColm">1. 평소에는 아무렇지도 않던 일들이 괴롭고 귀찮게 느껴진다.</td>
+  <td><input type="radio" name="var1" value="0"></td>
+  <td><input type="radio" name="var1" value="1"></td>
+  <td><input type="radio" name="var1" value="2"></td>
+  <td><input type="radio" name="var1" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">2. 먹고 싶지 않고 식욕이 없었다.</td>
+  <td><input type="radio" name="var2" value="0"></td>
+  <td><input type="radio" name="var2" value="1"></td>
+  <td><input type="radio" name="var2" value="2"></td>
+  <td><input type="radio" name="var2" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">3. 어느 누가 도와준다 하더라도 나의 울적한 기분을 떨쳐버릴 수 없을 것 같았다.</td>
+  <td><input type="radio" name="var3" value="0"></td>
+  <td><input type="radio" name="var3" value="1"></td>
+  <td><input type="radio" name="var3" value="2"></td>
+  <td><input type="radio" name="var3" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">4. 무슨 일을 하든 정신을 집중하기가 힘들었다.</td>
+  <td><input type="radio" name="var4" value="0"></td>
+  <td><input type="radio" name="var4" value="1"></td>
+  <td><input type="radio" name="var4" value="2"></td>
+  <td><input type="radio" name="var4" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">5. 비교적 잘 지냈다.</td>
+  <td><input type="radio" name="var5" value="3"></td>
+  <td><input type="radio" name="var5" value="2"></td>
+  <td><input type="radio" name="var5" value="1"></td>
+  <td><input type="radio" name="var5" value="0"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">6. 상당히 우울했다.</td>
+  <td><input type="radio" name="var6" value="0"></td>
+  <td><input type="radio" name="var6" value="1"></td>
+  <td><input type="radio" name="var6" value="2"></td>
+  <td><input type="radio" name="var6" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">7. 모든 일들이 힘들게 느껴졌다.</td>
+  <td><input type="radio" name="var7" value="0"></td>
+  <td><input type="radio" name="var7" value="1"></td>
+  <td><input type="radio" name="var7" value="2"></td>
+  <td><input type="radio" name="var7" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">8. 앞일이 암담하게 느껴졌다.</td>
+  <td><input type="radio" name="var8" value="0"></td>
+  <td><input type="radio" name="var8" value="1"></td>
+  <td><input type="radio" name="var8" value="2"></td>
+  <td><input type="radio" name="var8" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">9. 지금가지의 내 인생은 실패작이라는 생각이 들었다.</td>
+  <td><input type="radio" name="var9" value="0"></td>
+  <td><input type="radio" name="var9" value="1"></td>
+  <td><input type="radio" name="var9" value="2"></td>
+  <td><input type="radio" name="var9" value="3"></td>
+</tr>
+  
+  
+<tr class="questionRow">
+  <td class="questionColm">10. 적어도 보통 사람들만큼의 능력은 있었다고 생각한다.</td>
+  <td><input type="radio" name="var10" value="3"></td>
+  <td><input type="radio" name="var10" value="2"></td>
+  <td><input type="radio" name="var10" value="1"></td>
+  <td><input type="radio" name="var10" value="0"></td>
+</tr>
+
+
+<tr id="headerRow">
+  <td class="questionColm"><strong></strong></td>
+  <td class="ratingColm"><strong>극히 드물게</strong></td>
+  <td class="ratingColm"><strong>가끔</strong></td>
+  <td class="ratingColm"><strong>자주</strong></td>
+  <td class="ratingColm"><strong>거의 대부분</strong></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">11. 잠을 설쳤다(잠을 잘 이루지 못했다).</td>
+  <td><input type="radio" name="var11" value="0"></td>
+  <td><input type="radio" name="var11" value="1"></td>
+  <td><input type="radio" name="var11" value="2"></td>
+  <td><input type="radio" name="var11" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">12. 두려움을 느꼈다.</td>
+  <td><input type="radio" name="var12" value="0"></td>
+  <td><input type="radio" name="var12" value="1"></td>
+  <td><input type="radio" name="var12" value="2"></td>
+  <td><input type="radio" name="var12" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">13. 평소에 비해 말수가 적었다.</td>
+  <td><input type="radio" name="var13" value="0"></td>
+  <td><input type="radio" name="var13" value="1"></td>
+  <td><input type="radio" name="var13" value="2"></td>
+  <td><input type="radio" name="var13" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">14. 세상에 홀로 있는 듯한 외로움을 느꼈다.</td>
+  <td><input type="radio" name="var14" value="0"></td>
+  <td><input type="radio" name="var14" value="1"></td>
+  <td><input type="radio" name="var14" value="2"></td>
+  <td><input type="radio" name="var14" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">15. 큰 불만 없이 생활 했다.</td>
+  <td><input type="radio" name="var15" value="3"></td>
+  <td><input type="radio" name="var15" value="2"></td>
+  <td><input type="radio" name="var15" value="1"></td>
+  <td><input type="radio" name="var15" value="0"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">16. 사람들이 나에게 차갑게 대하는 것 같았다.</td>
+  <td><input type="radio" name="var16" value="0"></td>
+  <td><input type="radio" name="var16" value="1"></td>
+  <td><input type="radio" name="var16" value="2"></td>
+  <td><input type="radio" name="var16" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">17. 갑자기 울음이 나왔다.</td>
+  <td><input type="radio" name="var17" value="0"></td>
+  <td><input type="radio" name="var17" value="1"></td>
+  <td><input type="radio" name="var17" value="2"></td>
+  <td><input type="radio" name="var17" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">18. 마음이 슬펐다.</td>
+  <td><input type="radio" name="var18" value="0"></td>
+  <td><input type="radio" name="var18" value="1"></td>
+  <td><input type="radio" name="var18" value="2"></td>
+  <td><input type="radio" name="var18" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">19. 사람들이 나를 싫어하는 것 같았다.</td>
+  <td><input type="radio" name="var19" value="0"></td>
+  <td><input type="radio" name="var19" value="1"></td>
+  <td><input type="radio" name="var19" value="2"></td>
+  <td><input type="radio" name="var19" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">20. 도무지 뭘 해 나갈 엄두가 나지 않았다.</td>
+  <td><input type="radio" name="var20" value="0"></td>
+  <td><input type="radio" name="var20" value="1"></td>
+  <td><input type="radio" name="var20" value="2"></td>
+  <td><input type="radio" name="var20" value="3"></td>
+</tr>
+
+</table>
+{% endblock %}
+
+
+{% block testTitleAR %}
+مركز دراسات مقياس الاكتئاب الوبائية (Center for Epidemiologic Studies Depression, CES-D)
+{% endblock %}
+
+{% block testInstructionsAR %}
+<p>وفيما يلي قائمة من الطرق التي قد  تشعر أو تتصرف. أشر إلى عدد المرات التي شعرت بهذه الطريقة خلال الأسبوع الماضي. خلال الأسبوع الماضي.</p>
+<ul>
+<li>أقل من 1 اليوم <strong> نادرا أو لا شيء في ذلك الوقت </strong></li>
+<li>أيام 2-1 <strong> بعض أو قليلا من ذلك الوقت </strong></li>
+<li>أيام 4-3 <strong> أحيانا أو مقدار الوقت معتدل </strong></li>
+<li>أيام 7-5 <strong> معظم أو كل من ذلك الوقت </strong></li>
+</ul>
+{% endblock %}
+
+{% block testFormAR %}
+<table>  
+<tr id="headerRow">
+  <td class="questionColm"><strong></strong></td>
+  <td class="ratingColm"><strong>نادرا أو لا شيء في ذلك الوقت</strong></td>
+  <td class="ratingColm"><strong>بعض أو قليلا من ذلك الوقت</strong></td>
+  <td class="ratingColm"><strong>أحيانا أو مقدار الوقت معتدل</strong></td>
+  <td class="ratingColm"><strong>معظم أو كل من ذلك الوقت</strong></td>
+</tr>
+  
+<tr class="questionRow">
+  <td class="questionColm">1. ازعجت من الأشياء التي عادة لا يزعجني.</td>
+  <td><input type="radio" name="var1" value="0"></td>
+  <td><input type="radio" name="var1" value="1"></td>
+  <td><input type="radio" name="var1" value="2"></td>
+  <td><input type="radio" name="var1" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">2. لم أشعر بالجوع\ الأكل؛ شهيتي كان ضعيفة.</td>
+  <td><input type="radio" name="var2" value="0"></td>
+  <td><input type="radio" name="var2" value="1"></td>
+  <td><input type="radio" name="var2" value="2"></td>
+  <td><input type="radio" name="var2" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">3. شعرت بأنني لا أستطيع التخلص من الكآبة، حتى مع مساعدة من العائلة أو الأصدقاء.</td>
+  <td><input type="radio" name="var3" value="0"></td>
+  <td><input type="radio" name="var3" value="1"></td>
+  <td><input type="radio" name="var3" value="2"></td>
+  <td><input type="radio" name="var3" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">4. شعرت بأنني مجرد جيد مثل الآخرين.</td>
+  <td><input type="radio" name="var4" value="0"></td>
+  <td><input type="radio" name="var4" value="1"></td>
+  <td><input type="radio" name="var4" value="2"></td>
+  <td><input type="radio" name="var4" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">5. كان لي مشاكل في التركيز الذهني بما كنت أقوم به.</td>
+  <td><input type="radio" name="var5" value="0"></td>
+  <td><input type="radio" name="var5" value="1"></td>
+  <td><input type="radio" name="var5" value="2"></td>
+  <td><input type="radio" name="var5" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">6. شعرت بالاكتئاب.</td>
+  <td><input type="radio" name="var6" value="0"></td>
+  <td><input type="radio" name="var6" value="1"></td>
+  <td><input type="radio" name="var6" value="2"></td>
+  <td><input type="radio" name="var6" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">7. شعرت أن كل شيء فعلته كان جهد.</td>
+  <td><input type="radio" name="var7" value="0"></td>
+  <td><input type="radio" name="var7" value="1"></td>
+  <td><input type="radio" name="var7" value="2"></td>
+  <td><input type="radio" name="var7" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">8. شعرت بالتفاؤل نحو المستقبل.</td>
+  <td><input type="radio" name="var8" value="0"></td>
+  <td><input type="radio" name="var8" value="1"></td>
+  <td><input type="radio" name="var8" value="2"></td>
+  <td><input type="radio" name="var8" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">9. فكرت حياتي قد باءت بالفشل.</td>
+  <td><input type="radio" name="var9" value="0"></td>
+  <td><input type="radio" name="var9" value="1"></td>
+  <td><input type="radio" name="var9" value="2"></td>
+  <td><input type="radio" name="var9" value="3"></td>
+</tr>
+ 
+  
+<tr class="questionRow">
+  <td class="questionColm">10. شعرت بالخوف.</td>
+  <td><input type="radio" name="var10" value="0"></td>
+  <td><input type="radio" name="var10" value="1"></td>
+  <td><input type="radio" name="var10" value="2"></td>
+  <td><input type="radio" name="var10" value="3"></td>
+</tr>
+
+
+<tr id="headerRow">
+  <td class="questionColm"><strong></strong></td>
+  <td class="ratingColm"><strong>نادرا أو لا شيء في ذلك الوقت</strong></td>
+  <td class="ratingColm"><strong>بعض أو قليلا من ذلك الوقت</strong></td>
+  <td class="ratingColm"><strong>أحيانا أو مقدار الوقت معتدل</strong></td>
+  <td class="ratingColm"><strong>معظم أو كل من ذلك الوقت</strong></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">11. نومي مضطرباً.</td>
+  <td><input type="radio" name="var11" value="0"></td>
+  <td><input type="radio" name="var11" value="1"></td>
+  <td><input type="radio" name="var11" value="2"></td>
+  <td><input type="radio" name="var11" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">12. كنت سعيدا.</td>
+  <td><input type="radio" name="var12" value="0"></td>
+  <td><input type="radio" name="var12" value="1"></td>
+  <td><input type="radio" name="var12" value="2"></td>
+  <td><input type="radio" name="var12" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">13. تحدثت أقل من المعتاد.</td>
+  <td><input type="radio" name="var13" value="0"></td>
+  <td><input type="radio" name="var13" value="1"></td>
+  <td><input type="radio" name="var13" value="2"></td>
+  <td><input type="radio" name="var13" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">14. شعرت بالوحدة.</td>
+  <td><input type="radio" name="var14" value="0"></td>
+  <td><input type="radio" name="var14" value="1"></td>
+  <td><input type="radio" name="var14" value="2"></td>
+  <td><input type="radio" name="var14" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">15. الناس غير ودييون.</td>
+  <td><input type="radio" name="var15" value="0"></td>
+  <td><input type="radio" name="var15" value="1"></td>
+  <td><input type="radio" name="var15" value="2"></td>
+  <td><input type="radio" name="var15" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">16. لقد استمتعت الحياة.</td>
+  <td><input type="radio" name="var16" value="0"></td>
+  <td><input type="radio" name="var16" value="1"></td>
+  <td><input type="radio" name="var16" value="2"></td>
+  <td><input type="radio" name="var16" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">17. كنت امر بنوبات البكاء.</td>
+  <td><input type="radio" name="var17" value="0"></td>
+  <td><input type="radio" name="var17" value="1"></td>
+  <td><input type="radio" name="var17" value="2"></td>
+  <td><input type="radio" name="var17" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">18. شعرت بالحزن.</td>
+  <td><input type="radio" name="var18" value="0"></td>
+  <td><input type="radio" name="var18" value="1"></td>
+  <td><input type="radio" name="var18" value="2"></td>
+  <td><input type="radio" name="var18" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">19. شعرت أن الناس لا يحبونني.</td>
+  <td><input type="radio" name="var19" value="0"></td>
+  <td><input type="radio" name="var19" value="1"></td>
+  <td><input type="radio" name="var19" value="2"></td>
+  <td><input type="radio" name="var19" value="3"></td>
+</tr>
+
+  
+<tr class="questionRow">
+  <td class="questionColm">20. لم أتمكن من الحصول على "الاستمرار".</td>
+  <td><input type="radio" name="var20" value="0"></td>
+  <td><input type="radio" name="var20" value="1"></td>
+  <td><input type="radio" name="var20" value="2"></td>
+  <td><input type="radio" name="var20" value="3"></td>
+</tr>
+
+</table>
+{% endblock %}

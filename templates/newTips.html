@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block contentBoxEN %}
+<h2 class="centerText">Today's tip about Depression</h2>
+
+<p>{{ tip.tip }}<br><font size = 2.0em>▷Citation :: <a href = {{ tip.url }} target="_blank">{{ tip.citation }}</a></font></p>
+<p align = "center"><strong><font size = 3.0em>{{ tip.quote }}</font></strong></p>
+<p><strong>[Qustion] </strong>{{ tip.question }}</p>
+
+<form id="tipAnswers" action="{{ url_for('tips') }}" method="POST">
+<ol>
+<input type="radio" name="response" value = {{ questionNum }}1 checked="checked">{{ tip.answer }}<br>
+{% for wrong in tip.wrong %}
+  <input type="radio" name="response" value = {{ questionNum }}0>{{ wrong }}<br>
+{% endfor %}
+</ol>
+<input type="submit" value="Submit!">
+</form>
+{% endblock %}
+
+
+{% block contentBoxKR %}
+<h2 class="centerText">알고 계십니까?</h2>
+
+<p>{{ tip.tip }}<br><font size = 2.0em>▷출처 :: <a href = {{ tip.url }} target="_blank">{{ tip.citation }}</a></font></p>
+<p align = "center"><strong><font size = 3.0em>{{ tip.quote }}</font></strong></p>
+<p><strong>[문제] </strong>{{ tip.question }}</p>
+
+<form id="tipAnswers" action="{{ url_for('tips') }}" method="POST">
+<ol>
+<input type="radio" name="response" value = {{ questionNum }}1 checked="checked">{{ tip.answer }}<br>
+{% for wrong in tip.wrong %}
+  <input type="radio" name="response" value = {{ questionNum }}0>{{ wrong }}<br>
+{% endfor %}
+</ol>
+<input type="submit" value="제출!">
+</form>
+{% endblock %}

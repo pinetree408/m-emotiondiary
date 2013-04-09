@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block contentBoxEN %}
+    <h2 class="centerText">Admin Page :: {{ user.name }}</h2>
+    {% if userID in ['100002383326449', '567239032', '100001838301582', '2022228'] %}
+    <table border = "1">
+    	<tr><th>Name</th><th>Locale</th><th>Friends</th><th>Points</th><th>CES-D (1)</th><th>CES-D (2)</th><th>CES-D (3)</th><th>PHQ9</th><th>BDI</th><th>Tips viewed</th><th>Access time</th></tr>
+    	{% for users in alluser %}
+    	    <tr><td>{{ users['name'] }}</td><td>{{ users['locale'] }}</td><td>{{ users['friendNum'] }}</td><td>{{ users['points'] }}</td><td>{{ users['CESD1'] }}</td><td>{{ users['CESD2'] }}</td><td>{{ users['CESD3'] }}</td><td>{{ users['PHQ9'] }}</td><td>{{ users['BDI'] }}</td><td>{{ users['tip'] }}</td><td>{{ users['accessTime'] }}</td></tr>
+    	{% endfor %}
+    </table><br><br>
+    {% endif %}
+
+    <h2 class="centerText"><a href="{{ url_for('index') }}">메인 페이지로</a></h2>
+{% endblock %}
+
+{% block contentBoxKR %}
+    <h2 class="centerText">어드민 페이지 :: {{ user.name }}</h2>
+    {% if userID in ['100002383326449', '567239032', '100001838301582'] %}
+    <table border = "1">
+    	<tr><th>이름</th><th>로케일</th><th>친구 수</th><th>포인트</th><th>CES-D (1)</th><th>CES-D (2)</th><th>CES-D (3)</th><th>PHQ9</th><th>BDI</th><th>확인한 팁 수</th><th>접속시간</th></tr>
+    	{% for users in alluser %}
+    	    <tr><td>{{ users['name'] }}</td><td>{{ users['locale'] }}</td><td>{{ users['friendNum'] }}</td><td>{{ users['points'] }}</td><td>{{ users['CESD1'] }}</td><td>{{ users['CESD2'] }}</td><td>{{ users['CESD3'] }}</td><td>{{ users['PHQ9'] }}</td><td>{{ users['BDI'] }}</td><td>{{ users['tip'] }}</td><td>{{ users['accessTime'] }}</td></tr>
+    	{% endfor %}
+    </table><br><br>
+    {% endif %}
+
+    <h2 class="centerText"><a href="{{ url_for('index') }}">메인 페이지로</a></h2>
+{% endblock %}

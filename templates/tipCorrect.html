@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block contentBoxEN %}
+<h2 class="centerText">Thanks, {{ user.name }}!</h2>
+	<p>Correct! We score <strong>3</strong> points for {{ user.name }}. Now your point is <strong>{{ user.points }}</strong>.</p><br>
+
+	<p>You want to know more about depression? We still have some more tips for you to learn.</p>
+    <h2 class="centerText"><a href="{{ url_for('tips') }}">More tips</a></h2>
+{% endblock %}
+
+
+{% block contentBoxKR %}
+<h2 class="centerText">{{ user.name }}님, 감사합니다!</h2>
+	<p>정답을 맞추셨습니다! 현재 {{ user.name }}님의 포인트는 3점 올라 <strong>{{ user.points }}</strong>점입니다.</p><br>
+
+	<p>우울증에 대해 좀 더 알고 싶으신가요? {{ user.name }}님을 위해 아직 다른 팁들이 남아있습니다.</p>
+    <h2 class="centerText"><a href="{{ url_for('tips') }}">좀 더 알아보기</a></h2>
+{% endblock %}

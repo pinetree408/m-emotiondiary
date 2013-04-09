@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+<!-- Shows tips, at each tip the user answers a question, after answering they get points -->
+
+{% block contentBoxEN %}
+<h2 class="centerText">Learn About Depression</h2>
+<p class="centerText">{{ tip.questionText }}</p>
+
+<form id="tipAnswers" action="{{ url_for('tips') }}" method="POST">
+<ol>
+{% for answer in tip.answers %}
+  <button type="radio" name="answer" value="{{  }}"><li>{{ json.dumps(answer , ensure_ascii=False) }}</li></button>
+{% endfor %}
+</ol>
+<input type="submit" value="Submit">
+</form>
+
+{% if answer %}
+  {% if answer == tip.answer %}
+    <p>Right!</p>
+  {% endif %}
+  {% if answer != tip.answer %}
+    <p>Not quite!</p>
+  {% endif %}
+{% endif %}
+
+<p>{{ json.dumps(tip.tip , ensure_ascii=False) }}</p>
+<p>Citation: {{ tip.citation }}
+  </div>
+  {% endif %}
+{% endwith %}
+
+{% endblock %}
+
+{% block contentBoxKR %}
+<h2 class="centerText">우울증이란?</h2>
+<p class="centerText">{{ tip.questionText }}</p>
+
+<form id="tipAnswers" action="{{ url_for('tips') }}" method="POST">
+<ol>
+{% for answer in tip.answers %}
+  <button type="radio" name="answer" value="{{ answer.answerID }}"><li>{{ answer.answerText }}</li></button>
+{% endfor %}
+</ol>
+<input type="submit" value="Submit">
+</form>
+
+{% with messages = get_flashed_messages(category_filter=["tip"])
+ %}
+  {% if messages %}
+  <div id="tipFlashing">
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+    <input type="button" value="View Citation" action='window.location = "{{ tip.citation }}";'>
+  </div>
+  {% endif %}
+{% endwith %}
+
+{% endblock %}

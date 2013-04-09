@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block contentBoxEN %}
+<h2 class="centerText">Thanks, {{ user.name }}!</h2>
+	<p>We're sorry. Your answer was wrong.<br>Now {{ user.name }}'s point is <strong>{{ user.points }}</strong>.</p><br>
+
+	<p>You think you know the answer now? How about trying again to answer the question?</p>
+    <h2 class="centerText"><a href="{{ url_for('tips') }}">More tips again</a></h2>
+{% endblock %}
+
+
+{% block contentBoxKR %}
+<h2 class="centerText">{{ user.name }}님, 감사합니다!</h2>
+	<p>안타깝습니다. 정답을 맞추지 못하셨습니다.<br>현재 {{ user.name }}님의 포인트는  <strong>{{ user.points }}</strong>점입니다.</p><br>
+
+	<p>이제 답을 알 것 같으신가요? 그렇다면 틀린 문제 및 남은 문제들을 다시 풀어보는 것은 어떠신지요?</p>
+    <h2 class="centerText"><a href="{{ url_for('tips') }}">팁들 다시 보기</a></h2>
+{% endblock %}
