@@ -48,7 +48,7 @@
   {% if not 'CESD2' in user.testscores.keys() %}
     <li><a href="{{ url_for('test') }}">설문조사</a></li>
   {% endif %}
-  <li><a href="{{ url_for('tips') }}">좀 더 알아보기</a></strong></li><br>
+  <li><a href="{{ url_for('tips') }}">좀 더 알아보기</a></strong></li>
   <li><a onClick="sendRequestViaMultiFriendSelector(); return false;">
       친구 초대하기</a></li> <!-- Invite Friends: Find "Request" at facabook developers webpage -->
   <li><a href="https://www.facebook.com/dialog/feed?
