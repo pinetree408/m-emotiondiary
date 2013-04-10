@@ -187,6 +187,7 @@ table {
 	-webkit-border-radius: 0 0 4px 0;
 	display: block;
 	list-style: none;
+	float: bottom;
 	position: bottom;
 	z-index: 10;
 }
