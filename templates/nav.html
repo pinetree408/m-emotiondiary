@@ -75,6 +75,10 @@
     <li><a href="{{ url_for('test') }}">Surveys</a></li>
   {% endif %}
   <li><a href="{{ url_for('tips') }}">More Tips</a></li>
+    <li><strong>Play</strong></li>
+  <li><a href="{{ url_for('game') }}">Stroop Effect</a></li>
+  <!-- <li><a href="{{ url_for('game') }}">Find Patterns</a></li> -->
+  <li><strong>Share</strong></li>
   <li><a href="https://www.facebook.com/dialog/feed?
   app_id=395527847191253&
   link=https://apps.facebook.com/emotiondiarypython/&
@@ -92,3 +96,4 @@
   <!-- <li><a href="{{ url_for('userInfo') }}">Privacy</a></li> -->
   </ul>
 </nav>
+{% endif %}
