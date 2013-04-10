@@ -177,16 +177,17 @@ table {
 }
 
 #leftMenu {
-	margin: auto auto 5em;
+	margin: 0;
 	width: 100px;
 	height: 100%;
-	padding: 15px;
+	padding: 5px 15px 15px 15px;
 	background: white;
 	border-right: 1px solid #C4CDE0;
 	border-bottom: 1px solid #C4CDE0;
 	-webkit-border-radius: 0 0 4px 0;
 	display: block;
 	list-style: none;
+	float: bottom;
 	position: relative;
 	z-index: 10;
 }
