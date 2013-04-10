@@ -177,7 +177,7 @@ table {
 }
 
 #leftMenu {
-	margin: 0;
+	margin: 0 auto;
 	width: 100px;
 	height: 100%;
 	padding: 5px 15px 15px 15px;
@@ -187,8 +187,8 @@ table {
 	-webkit-border-radius: 0 0 4px 0;
 	display: block;
 	list-style: none;
-	float: bottom;
-	position: bottom;
+	float: left;
+	position: auto;
 	z-index: 10;
 }
 
