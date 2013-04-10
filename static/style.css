@@ -117,8 +117,8 @@ table {
 }
 
 .box img {
-	max-width: 90%;
-	max-height: 300px;
+  max-width: 90%;
+  max-height: 300px;
 }
 
 .box p {
@@ -126,25 +126,25 @@ table {
 }
 
 .centerText {
-	text-align: center;
+  text-align: center;
 }
 
 .center {
-	text-align: center;
-	margin-top: 3em;
-	vertical-align: middle;
+  text-align: center;
+  margin-top: 3em;
+  vertical-align: middle;
 }
 
 #heading {
-	width: 100%;
-	height: 38px;
-	font-size: 23px;
-	padding-top: 6px;
-	padding-left: 10px;
-	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
-	color: white;
-	background: #8b9dc3;
-	clear: both;
+  width: 100%;
+  height: 38px;
+  font-size: 23px;
+  padding-top: 6px;
+  padding-left: 10px;
+  font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+  color: white;
+  background: #8b9dc3;
+  clear: both;
 }
 
 #heading a {
@@ -177,7 +177,7 @@ table {
 }
 
 #leftMenu {
-	margin: 0; 
+  margin: 0;
   width: 100px;
   height: 100%;
   padding: 5px 15px 15px 15px;
@@ -193,13 +193,13 @@ table {
 }
 
 #leftMenu li {
-	font-size: smaller;
+  font-size: smaller;
 }
 
 #leftMenu li strong {
-	font-size: larger;
-	padding-top: 8px;
-	display: block;
+  font-size: larger;
+  padding-top: 8px;
+  display: block;
 }
 
 .leaderboard_item {
