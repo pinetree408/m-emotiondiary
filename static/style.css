@@ -190,6 +190,7 @@ table {
 	float: left;
 	position: relative;
 	z-index: 10;
+  text-align: center;
 }
 
 #leftMenu li {
