@@ -47,13 +47,13 @@
   <ul id="leftMenu">
   <li><strong>활동 내역</strong></li>
   {% if not 'CESD2' in user.testscores.keys() %}
-    <li><a href="{{ url_for('test') }}">2차 설문조사</a></li>
+    <li><a href="{{ url_for('test') }}">설문조사</a></li>
   {% endif %}
   <li><a href="{{ url_for('tips') }}">좀 더 알아보기</a></strong></li>
-  {% if user.points >= 1 %}
+<!--   {% if user.points >= 1 %}
     <li><strong>게임</strong></li>
   <li><a href="{{ url_for('game') }}">스트룹 검사</a></li>
-<!-- <li><a href="{{ url_for('game') }}">패턴 찾기</a></li> -->
+ --><!-- <li><a href="{{ url_for('game') }}">패턴 찾기</a></li> -->
   <li><strong>소셜활동</strong></li>
   <li><a href="https://www.facebook.com/dialog/feed?
   app_id=395527847191253&
