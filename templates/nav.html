@@ -45,7 +45,7 @@
 {% if user.locale == 'ko_KR' %}
 <nav id="navigation">
   <ul id="leftMenu">
-  {% if not 'CESD2' in user.testscores.keys() %}
+  {% if not 'CESD1' in user.testscores.keys() %}
     <li><a href="{{ url_for('test') }}">설문조사</a></li>
   {% endif %}
   <li><a href="{{ url_for('tips') }}">좀 더 알아보기</a></strong></li>
@@ -70,7 +70,7 @@
 <nav id="navigation">
   <ul id="leftMenu">
   <li><strong>Learn</strong></li>
-  {% if not 'CESD2' in user.testscores.keys() %}
+  {% if not 'CESD1' in user.testscores.keys() %}
     <li><a href="{{ url_for('test') }}">Surveys</a></li>
   {% endif %}
   <li><a href="{{ url_for('tips') }}">More Tips</a></li>
