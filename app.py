@@ -171,7 +171,7 @@ def login():
 @app.route('/calendar')
 def calendar():
     sessionID = get_facebook_oauth_token()
-    return render_template('about.html', user=userCache[sessionID])
+    return render_template('calendar.html', user=userCache[sessionID])
 
 @app.route('/about')
 def about():
