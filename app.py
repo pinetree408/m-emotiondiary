@@ -168,6 +168,10 @@ def login():
 #     # return pprint.pformat(userCache) #For rendering userCache
 #     return pprint.pformat(userCache) #For rendering userCache
 
+@app.route('/calendar')
+def calendar():
+    return "hello"
+
 @app.route('/about')
 def about():
     sessionID = get_facebook_oauth_token()
