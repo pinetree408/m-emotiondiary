@@ -58,7 +58,7 @@ class User(db.Model):
         self.facebookID = facebookID
         self.name = name
         self.locale = locale
-        self.friendNum = friendNumkdbs
+        self.friendNum = friendNum
         self.target = target
         self.points = points
         self.testscore = testscore
@@ -181,7 +181,6 @@ def calendar():
 def calendarresult():
     sessionID = get_facebook_oauth_token()
     return render_template('calendarresult.html', user=userCache[sessionID])
-
 
 @app.route('/about')
 def about():
