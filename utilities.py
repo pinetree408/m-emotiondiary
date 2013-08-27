@@ -7,18 +7,18 @@ from collections import namedtuple
 
 #Management Variables
 SECRET_KEY = str(int(math.floor(1000000000 * random.random()))) + '123' #secures interaction between the browser and Flask
-DEBUG = False #Toggles Flask debug mode, changes FB App to a local friendly one and changes DB URL
+DEBUG = True #Toggles Flask debug mode, changes FB App to a local friendly one and changes DB URL
 OFFLINE = False #Toggles a local user instead of FB authentication (overwritten when not debugging)
 TrapErrors = True #Toggles some error handling tools
 
 #Setting up the appropriate Facebook session
 if DEBUG == True:
 	#Debug app codes
-	FACEBOOK_APP_ID = '292670767512606'
-	FACEBOOK_APP_SECRET = 'c8bf8a30da9fcb60b188cd196850ea47'
+	FACEBOOK_APP_ID = '539481746106060'
+	FACEBOOK_APP_SECRET = '4fa2608c76133fb471755bcf1c360c85'
 	# FACEBOOK_APP_ID = '395527847191253'
 	# FACEBOOK_APP_SECRET = 'a22ce24a9cfe6f266364bfa2942e7f6b'
-	OFFLINE = True
+	OFFLINE = False
 else:
 	#Live app codes
 	FACEBOOK_APP_ID = '539481746106060'
