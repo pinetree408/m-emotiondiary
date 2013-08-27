@@ -43,7 +43,7 @@ class User(db.Model):
     testscore = db.Column(db.PickleType)    ## Pickled 'Dictionary' type in Python
     tip = db.Column(db.PickleType)          ## Pickled 'Array(list)' type in Python. stores which number of tips user viewed.
     crawldata = db.Column(db.PickleType)
-    accessTime = db.Column(db.Integer)
+    accessTime = db.Column(db.Integer)kdbsl
     # dateAdded: time.time(),
     # friends: len(friends.data['data']),
     # points: 1,
@@ -58,7 +58,7 @@ class User(db.Model):
         self.facebookID = facebookID
         self.name = name
         self.locale = locale
-        self.friendNum = friendNum
+        self.friendNum = friendNumkdbs
         self.target = target
         self.points = points
         self.testscore = testscore
@@ -168,10 +168,13 @@ def login():
 #     # return pprint.pformat(userCache) #For rendering userCache
 #     return pprint.pformat(userCache) #For rendering userCache
 
-@app.route('/calendar')
+@app.route('/calendar', methods=['GET', 'POST'])
 def calendar():
     sessionID = get_facebook_oauth_token()
-    return render_template('calendar.html', user=userCache[sessionID])
+    if request.method == 'GET':
+        return render_template('calendar.html', user=userCache[sessionID])
+    if request.method == 'POST':
+        return redirect(url_for('index'))
 
 @app.route('/about')
 def about():

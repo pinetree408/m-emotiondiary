@@ -5,7 +5,9 @@
 
 {% block contentBoxKR %}
 <h2 class="centerText">today's emotion</h2>
-<table>  
+
+<form id="calendar" action="{{ url_for('test') }}" method="POST">
+<table> 
 <tr id="headerRow">
   <td class="ratingColm"><strong>verybad</strong></td>
   <td class="ratingColm"><strong>bad</strong></td>
@@ -28,4 +30,6 @@
   <td><input type="radio" name="var1" value="5"></td>
 </tr>
 </table>
+<input type="submit" value="제출">
+</form>
 {% endblock %}
