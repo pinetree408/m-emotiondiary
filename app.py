@@ -44,6 +44,7 @@ class User(db.Model):
     tip = db.Column(db.PickleType)          ## Pickled 'Array(list)' type in Python. stores which number of tips user viewed.
     crawldata = db.Column(db.PickleType)
     accessTime = db.Column(db.Integer)
+    calendar = db.Column(db.PickleType)
     # dateAdded: time.time(),
     # friends: len(friends.data['data']),
     # points: 1,
@@ -53,7 +54,7 @@ class User(db.Model):
     # tips:{} #tip ID keys with answers as values
 
     # def __init__(self, authID, facebookID, name, locale):
-    def __init__(self, authID, facebookID, name, locale, friendNum, target, points, testscore, tip, crawlData, accessTime):
+    def __init__(self, authID, facebookID, name, locale, friendNum, target, points, testscore, tip, crawlData, accessTime, calendar):
         self.authID = authID
         self.facebookID = facebookID
         self.name = name
@@ -65,6 +66,7 @@ class User(db.Model):
         self.tip = tip
         self.crawldata = crawlData
         self.accessTime = accessTime
+        self.calendar = calendar
 
     def __repr__(self):
         return self.name.encode('utf-8') + ', ' + self.locale.encode('utf-8')
@@ -173,8 +175,15 @@ def calendar():
     sessionID = get_facebook_oauth_token()
     if request.method == 'GET':
         return render_template('calendar.html', user=userCache[sessionID])
+
     if request.method == 'POST':
-        return redirect(url_for('index'))
+        return redirect(url_for('calendarresult'))
+
+@app.route('/calendarresult')
+def calendarresult():
+    sessionID = get_facebook_oauth_token()
+    return render_template('calendarresult.html', user=userCache[sessionID])
+
 
 @app.route('/about')
 def about():
