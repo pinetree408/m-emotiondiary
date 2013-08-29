@@ -29,6 +29,9 @@
 		{% if day[1] == 5 %}
 			<th><img src="/static/veryhappy.png" width="40%" height="100%"></th>
 		{% endif %}
+		{% if day[1] == 0 %}
+			<th></th>
+		{% endif %}
 	{% endfor %}
 	</tr>
 {% endfor %}
