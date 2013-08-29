@@ -175,8 +175,7 @@ def calendar():
         return render_template('calendar.html', user=userCache[sessionID])
 
     if request.method == 'POST':
-        d = datetime.date.today()
-        today = d.strftime("%m/%d")
+        today = datetime.date.today()
         scoreItem = eval("request.form.get('var1')")
         if scoreItem:
             result = int(scoreItem)
