@@ -2,7 +2,7 @@
 from flask import Flask, request, session, url_for, redirect, render_template, abort, g, flash
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_oauth import OAuth
-import random, math, time, os
+import random, math, time, os, datetime
 import sqlite3, pprint
 from collections import namedtuple
 #  from facepy.utils import get_extended_access_token
@@ -175,12 +175,14 @@ def calendar():
         return render_template('calendar.html', user=userCache[sessionID])
 
     if request.method == 'POST':
+        d = datetime.date.today()
+        today = d.strftime("%m/%d")
         scoreItem = eval("request.form.get('var1')")
         if scoreItem:
             result = int(scoreItem)
         else:
             result = 0
-        return render_template('calendarresult.html', user=userCache[sessionID], score=result)
+        return render_template('calendarresult.html', user=userCache[sessionID], score=result, date=today)
 
 @app.route('/about')
 def about():
