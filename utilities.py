@@ -29,7 +29,7 @@ oauth = OAuth()
 class Objects(object):
 	"""Decelerations of objects"""
 	#Basic user
-	User = namedtuple('user', ['name','id', 'sessionID', 'dateAdded', 'friends', 'points', 'locale', 'target', 'testscores', 'tips', 'data'])
+	User = namedtuple('user', ['name','id', 'sessionID', 'dateAdded', 'friends', 'points', 'calendar', 'locale', 'target', 'testscores', 'tips', 'data'])
 	
 	#Test objects
 	Score = namedtuple('score',['activity','score','time'])

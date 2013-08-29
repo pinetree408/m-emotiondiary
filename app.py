@@ -40,6 +40,7 @@ class User(db.Model):
     friendNum = db.Column(db.Integer)
     target = db.Column(db.String(10))
     points = db.Column(db.Integer)
+    calendar = db.Column(db.PickleType)
     testscore = db.Column(db.PickleType)    ## Pickled 'Dictionary' type in Python
     tip = db.Column(db.PickleType)          ## Pickled 'Array(list)' type in Python. stores which number of tips user viewed.
     crawldata = db.Column(db.PickleType)
@@ -53,7 +54,7 @@ class User(db.Model):
     # tips:{} #tip ID keys with answers as values
 
     # def __init__(self, authID, facebookID, name, locale):
-    def __init__(self, authID, facebookID, name, locale, friendNum, target, points, testscore, tip, crawlData, accessTime):
+    def __init__(self, authID, facebookID, name, locale, friendNum, target, points, calendar, testscore, tip, crawlData, accessTime):
         self.authID = authID
         self.facebookID = facebookID
         self.name = name
@@ -61,10 +62,12 @@ class User(db.Model):
         self.friendNum = friendNum
         self.target = target
         self.points = points
+        self.calendar = calendar
         self.testscore = testscore
         self.tip = tip
         self.crawldata = crawlData
         self.accessTime = accessTime
+        
 
     def __repr__(self):
         return self.name.encode('utf-8') + ', ' + self.locale.encode('utf-8')
@@ -232,7 +235,7 @@ def tips():
         if int(resp) % 10 == 1:   # correct answer
             if not ((int(resp) / 10) in userCache[sessionID].tips):
                 tempUser = O.User(userCache[sessionID].name, userCache[sessionID].id, sessionID, userCache[sessionID].dateAdded, userCache[sessionID].friends,
-                                   userCache[sessionID].points + 3, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
+                                   userCache[sessionID].points + 3,  userCache[sessionID].calendar, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
                                    userCache[sessionID].tips, userCache[sessionID].data)
                     # We can't change the value of userCache[sessionID] because it's namedtuple, the immutable object. to adjust the value, we should change the whole object.
                 user_fbID = facebook.get('me').data['id']
@@ -277,7 +280,7 @@ def game():
     sessionID = get_facebook_oauth_token()
 
     tempUser = O.User(userCache[sessionID].name, userCache[sessionID].id, sessionID, userCache[sessionID].dateAdded, userCache[sessionID].friends,
-                               userCache[sessionID].points + 0, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
+                               userCache[sessionID].points + 0,  userCache[sessionID].calendar, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
                                userCache[sessionID].tips, userCache[sessionID].data)
                 # We can't change the value of userCache[sessionID] because it's namedtuple, the immutable object. to adjust the value, we should change the whole object.
     userCache[sessionID] = tempUser
@@ -318,7 +321,7 @@ def test():
         scoresum = int(sum(score))
 
         tempUser = O.User(userCache[sessionID].name, userCache[sessionID].id, sessionID, userCache[sessionID].dateAdded, userCache[sessionID].friends,
-                               userCache[sessionID].points + 5, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
+                               userCache[sessionID].points + 5,  userCache[sessionID].calendar, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
                                userCache[sessionID].tips, userCache[sessionID].data)
         # We can't change the value of userCache[sessionID] because it's namedtuple, the immutable object. to adjust the value, we should change the whole object.
         userCache[sessionID] = tempUser
@@ -363,7 +366,7 @@ def userSession():
         else:                                  # returning User. apply user to cache and update the crawl data.
             # IN THIS PART WE SHOULD ADJUST THE TIME DATA LATER
             userCache[sessionID] = O.User(sessionUser.name, sessionUser.facebookID, sessionID, sessionUser.accessTime, len(facebook.get('me/friends').data['data']),
-                                                            sessionUser.points + 1, me.data['locale'], sessionUser.target, sessionUser.testscore, sessionUser.tip, sessionUser.crawldata)
+                                                            sessionUser.points + 1, sessionUser.calendar, me.data['locale'], sessionUser.target, sessionUser.testscore, sessionUser.tip, sessionUser.crawldata)
 
             # update the crawl data
             friends = facebook.get('me/friends')        
@@ -412,11 +415,11 @@ def userSession():
         #crawldata_new = [timelineFeed.data, relationStatus, groups.data, interest.data, likes.data, location.data, notes.data, messages.data, friendRequest.data, events.data]
         crawldata_new = [timelineFeed.data, relationStatus, groups.data, interest.data, likes.data, location.data, notes.data, None, friendRequest.data, events.data]
 
-        newUser = User(sessionID, me.data['id'], me.data['name'], me.data['locale'], len(friends.data['data']), 'control', 1, {}, [], crawldata_new, int(time.time()))
+        newUser = User(sessionID, me.data['id'], me.data['name'], me.data['locale'], len(friends.data['data']), 'control', 1, [], {}, [], crawldata_new, int(time.time()))
         db.session.add(newUser)
         db.session.commit()
 
-        userCache[sessionID] = O.User(me.data['name'], me.data['id'], sessionID, int(time.time()), len(friends.data['data']), 1, me.data['locale'], 'control', {}, [], crawldata_new)
+        userCache[sessionID] = O.User(me.data['name'], me.data['id'], sessionID, int(time.time()), len(friends.data['data']), 1, [], me.data['locale'], 'control', {}, [], crawldata_new)
     
     # after this part there should be identical user data in each memory, DB and cache.
 
