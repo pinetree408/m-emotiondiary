@@ -204,7 +204,7 @@ def calendar():
 def calendarresult():
     sessionID = get_facebook_oauth_token()
     user_fbID = facebook.get('me').data['id']
-    calendarset = User.query.filter_by(facebookID=user_fbID).first.calendar
+    calendarset = User.query.filter_by(facebookID=user_fbID).first().calendar
     return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset)
 
 
