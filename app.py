@@ -174,17 +174,39 @@ def login():
 @app.route('/calendar', methods=['GET', 'POST'])
 def calendar():
     sessionID = get_facebook_oauth_token()
+
     if request.method == 'GET':
         return render_template('calendar.html', user=userCache[sessionID])
 
     if request.method == 'POST':
+
+        todayemotion = []
+
         today = datetime.date.today()
+        todayemotion.append(today)
         scoreItem = eval("request.form.get('var1')")
         if scoreItem:
             result = int(scoreItem)
         else:
             result = 0
-        return render_template('calendarresult.html', user=userCache[sessionID], score=result, date=today)
+        todayemotion.append(result)
+        index = len(userCache[sessionID].calendar) + 1
+        todayemotion.append(index)
+
+        user_fbID = facebook.get('me').data['id']
+        userCache[sessionID].calendar.append(todayemotion)
+        User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
+        db.session.commit()
+
+        return redirect(url_for('calendarresult'))
+
+@app.route('/calendarresult')
+def calendarresult():
+    sessionID = get_facebook_oauth_token()
+    user_fbID = facebook.get('me').data['id']
+    calendarset = User.query.filter_by(facebookID=user_fbID).first.calendar
+    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset)
+
 
 @app.route('/about')
 def about():

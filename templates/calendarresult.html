@@ -6,8 +6,8 @@
 {% block contentBoxKR %}
 <h2 class="centerText">calendar hello</h2>
 <table border = "1">
-	<tr><th>{{date.strftime("%m/%d")}}</th></tr>
-	<tr><th>{{score}}</th></tr>
+	<tr><th>{{date[0][1].strftime("%m/%d")}}</th></tr>
+	<tr><th>{{date[0][2]}}</th></tr>
 </table><br><br>
 <h2 class="centerText"><a href="{{ url_for('index') }}">메인 페이지로</a></h2>
 {% endblock %}
