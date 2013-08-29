@@ -175,7 +175,12 @@ def calendar():
         return render_template('calendar.html', user=userCache[sessionID])
 
     if request.method == 'POST':
-        return render_template('calendarresult.html', user=userCache[sessionID])
+        scoreItem = eval("request.form.get('var1')")
+        if scoreItem:
+            result = int(scoreItem))
+        else:
+            result = 0
+        return render_template('calendarresult.html', user=userCache[sessionID], score=result)
 
 @app.route('/about')
 def about():
