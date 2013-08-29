@@ -204,8 +204,32 @@ def calendar():
 def calendarresult():
     sessionID = get_facebook_oauth_token()
     user_fbID = facebook.get('me').data['id']
-    calendarset = User.query.filter_by(facebookID=user_fbID).first().calendar
-    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset)
+    temp = User.query.filter_by(facebookID=user_fbID).first().calendar
+    line1 = []
+    line2 = []
+    line3 = []
+    line4 = []
+    for sample in temp:
+        if sample[2] < 5:
+            line1.append(sample)
+        elif sample[2] < 9:
+            line2.append(sample)
+        elif sample[2] <13:
+            line3.append(sample)
+        else:
+            line4.append(sample)
+    calendarset = []
+    if len(line1) > 0:
+        calendarset.append(line1)
+    if len(line2) > 0:
+        calendarset.append(line2)
+    if len(line3) > 0:
+        calendarset.append(line3)
+    if len(line4) > 0:
+        calendarset.append(line4)
+    length = len(calendarset)
+
+    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset, len=length)
 
 
 @app.route('/about')
