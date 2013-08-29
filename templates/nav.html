@@ -57,7 +57,7 @@
               redirect_uri=https://apps.facebook.com/emotiondiarypython/">Sharing</a></li>
           <li><a href="{{ url_for('about') }}">About ED</a></li>
           <li><a href="{{ url_for('tips') }}">Tips & Facts</a></li>
-          <li><a href="{{ url_for('calendar') }}">Emotion Log</a></li>
+
         </ul>
       </div>
       <div id="leftMenu_right"> 
@@ -65,6 +65,7 @@
           <li><a onClick="sendRequestViaMultiFriendSelector(); return false;">Inviting friends</a><!-- Invite Friends: Find "Request" at facabook developers webpage --></li>
           <li><a href="{{ url_for('admin') }}">Admin page</a></li><!-- <li><strong><a href="{{ url_for('userInfo') }}">사용자 정보</a></strong></li> -->
           {% if not 'CESD1' in user.testscores.keys() %}<li><a href="{{ url_for('test') }}">Surveys</a></li>{% endif %}
+          <li><a href="{{ url_for('calendar') }}">Emotion Log</a></li>
         </ul>
       </div>
     </div>
