@@ -177,7 +177,7 @@ def calendar():
     if request.method == 'POST':
         scoreItem = eval("request.form.get('var1')")
         if scoreItem:
-            result = int(scoreItem))
+            result = int(scoreItem)
         else:
             result = 0
         return render_template('calendarresult.html', user=userCache[sessionID], score=result)
