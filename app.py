@@ -174,9 +174,14 @@ def login():
 @app.route('/calendar', methods=['GET', 'POST'])
 def calendar():
     sessionID = get_facebook_oauth_token()
-
+    user_fbID = facebook.get('me').data['id']
+    test = User.query.filter_by(facebookID=user_fbID).first().calendar
+        
     if request.method == 'GET':
-        return render_template('calendar.html', user=userCache[sessionID])
+        if datetime.date.today() == test[(len(test) - 1)][0]:
+            return redirect(url_for('calendarresult'))
+        else:
+            return render_template('calendar.html', user=userCache[sessionID])
 
     if request.method == 'POST':
 
