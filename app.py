@@ -227,8 +227,9 @@ def calendarresult():
         calendarset.append(line3)
     if len(line4) > 0:
         calendarset.append(line4)
+    length = len(calendarset)
 
-    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset)
+    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset, len=length)
 
 
 @app.route('/about')
