@@ -175,12 +175,7 @@ def calendar():
         return render_template('calendar.html', user=userCache[sessionID])
 
     if request.method == 'POST':
-        return redirect(url_for('calendarresult'))
-
-@app.route('/calendarresult')
-def calendarresult():
-    sessionID = get_facebook_oauth_token()
-    return render_template('calendarresult.html', user=userCache[sessionID])
+        return render_template('calendarresult.html', user=userCache[sessionID])
 
 @app.route('/about')
 def about():
