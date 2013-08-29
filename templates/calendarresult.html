@@ -4,10 +4,18 @@
 {% endblock %}
 
 {% block contentBoxKR %}
-<h2 class="centerText">calendar hello</h2>
+<h2 class="centerText">calendar</h2>
 <table border = "1">
-	<tr><th>{{date[0][0].strftime("%m/%d")}}</th></tr>
-	<tr><th>{{date[0][1]}}</th></tr>
+	<tr>
+	{% for day in date %}
+		<th>{{day[0].strftime("%m/%d")}}</th>
+	{% endfor %}
+	</tr>
+	<tr>
+	{% for day in date %}
+		<th>{{day[1]}}</th>
+	{% endfor %}
+	</tr>
 </table><br><br>
 <h2 class="centerText"><a href="{{ url_for('index') }}">메인 페이지로</a></h2>
 {% endblock %}
