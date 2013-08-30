@@ -217,15 +217,24 @@ def calendarresult():
     line2 = []
     line3 = []
     line4 = []
+    line5 = []
+    line6 = []
+    line7 = []
     for sample in temp:
         if sample[2] < 5:
             line1.append(sample)
         elif sample[2] < 9:
             line2.append(sample)
-        elif sample[2] <13:
+        elif sample[2] < 13:
             line3.append(sample)
-        else:
+        elif sample[2] < 17:
             line4.append(sample)
+        elif sample[2] < 21:
+            line5.append(sample)
+        elif sample[2] < 25:
+            line6.append(sample)
+        else:
+            line7.append(sample)
     calendarset = []
     if len(line1) > 0:
         calendarset.append(line1)
@@ -235,6 +244,12 @@ def calendarresult():
         calendarset.append(line3)
     if len(line4) > 0:
         calendarset.append(line4)
+    if len(line5) > 0:
+        calendarset.append(line5)
+    if len(line6) > 0:
+        calendarset.append(line6)
+    if len(line7) > 0:
+        calendarset.append(line7)
     length = len(calendarset)
 
     return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset, len=length)
