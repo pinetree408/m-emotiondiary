@@ -180,9 +180,6 @@ def calendar():
     lastdate = test[(len(test) - 1)][0]
 
     if request.method == 'GET':
-        return render_template('calendar.html', user=userCache[sessionID])
-        
-    if request.method == 'GET':
         if todaydate == lastdate:
             return redirect(url_for('calendarresult'))
         else:
@@ -201,8 +198,6 @@ def calendar():
                 return render_template('calendar.html', user=userCache[sessionID])
             else:
                 return render_template('calendar.html', user=userCache[sessionID])
-
-       
 
     if request.method == 'POST':
 
