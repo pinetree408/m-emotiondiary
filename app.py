@@ -178,7 +178,7 @@ def calendar():
     test = User.query.filter_by(facebookID=user_fbID).first().calendar
     todaydate = datetime.date.today()
 
-    if len(test) > 0:
+    
         lastdate = test[(len(test) - 1)][0]
 
         if request.method == 'GET':
@@ -200,10 +200,7 @@ def calendar():
                     return render_template('calendar.html', user=userCache[sessionID])
                 else:
                     return render_template('calendar.html', user=userCache[sessionID])
-    else:
-        if request.method == 'GET':
-            return render_template('calendar.html', user=userCache[sessionID])
-
+    
 
     if request.method == 'POST':
 
