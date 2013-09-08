@@ -183,7 +183,9 @@ def calendar():
 
         if request.method == 'GET':
             if todaydate == lastdate:
-                return redirect(url_for('calendarresult'))
+                #return redirect(url_for('calendarresult'))
+                return render_template('calendar.html', user=userCache[sessionID])
+
             else:
                 if (todaydate.toordinal() - lastdate.toordinal()) > 1:
                     for i in range(todaydate.toordinal() - lastdate.toordinal() - 1):
@@ -194,6 +196,8 @@ def calendar():
                         blankemotion.append(result)
                         index = len(test) + i + 1
                         blankemotion.append(index)
+                        memo = ""
+                        blankemotion.append(memo)
                         userCache[sessionID].calendar.append(blankemotion)
                     User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
                     db.session.commit()
@@ -212,6 +216,7 @@ def calendar():
         today = datetime.date.today()
         todayemotion.append(today)
         scoreItem = eval("request.form.get('var1')")
+        memo = eval("request.form.get('memo')"))
         if scoreItem:
             result = int(scoreItem)
         else:
@@ -219,6 +224,7 @@ def calendar():
         todayemotion.append(result)
         index = len(userCache[sessionID].calendar) + 1
         todayemotion.append(index)
+        todayemotion.append(memo)
 
         user_fbID = facebook.get('me').data['id']
         userCache[sessionID].calendar.append(todayemotion)
