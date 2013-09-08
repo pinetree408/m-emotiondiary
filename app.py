@@ -216,7 +216,7 @@ def calendar():
         today = datetime.date.today()
         todayemotion.append(today)
         scoreItem = eval("request.form.get('var1')")
-        memo = eval("request.form.get('memo')"))
+        memo = eval("request.form.get('memo')")
         if scoreItem:
             result = int(scoreItem)
         else:
