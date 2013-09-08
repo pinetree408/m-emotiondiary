@@ -177,27 +177,33 @@ def calendar():
     user_fbID = facebook.get('me').data['id']
     test = User.query.filter_by(facebookID=user_fbID).first().calendar
     todaydate = datetime.date.today()
-    lastdate = test[(len(test) - 1)][0]
 
-    if request.method == 'GET':
-        if todaydate == lastdate:
-            return redirect(url_for('calendarresult'))
-        else:
-            if (todaydate.toordinal() - lastdate.toordinal()) > 1:
-                for i in range(todaydate.toordinal() - lastdate.toordinal() - 1):
-                    blankemotion = []
-                    blankdate = lastdate + datetime.timedelta(days=(i+1))
-                    blankemotion.append(blankdate)
-                    result = 0
-                    blankemotion.append(result)
-                    index = len(test) + i + 1
-                    blankemotion.append(index)
-                    userCache[sessionID].calendar.append(blankemotion)
-                User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
-                db.session.commit()
-                return render_template('calendar.html', user=userCache[sessionID])
+    if len(test) > 0:
+        lastdate = test[(len(test) - 1)][0]
+
+        if request.method == 'GET':
+            if todaydate == lastdate:
+                return redirect(url_for('calendarresult'))
             else:
-                return render_template('calendar.html', user=userCache[sessionID])
+                if (todaydate.toordinal() - lastdate.toordinal()) > 1:
+                    for i in range(todaydate.toordinal() - lastdate.toordinal() - 1):
+                        blankemotion = []
+                        blankdate = lastdate + datetime.timedelta(days=(i+1))
+                        blankemotion.append(blankdate)
+                        result = 0
+                        blankemotion.append(result)
+                        index = len(test) + i + 1
+                        blankemotion.append(index)
+                        userCache[sessionID].calendar.append(blankemotion)
+                    User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
+                    db.session.commit()
+                    return render_template('calendar.html', user=userCache[sessionID])
+                else:
+                    return render_template('calendar.html', user=userCache[sessionID])
+    else:
+        if request.method == 'GET':
+            return render_template('calendar.html', user=userCache[sessionID])
+
 
     if request.method == 'POST':
 
