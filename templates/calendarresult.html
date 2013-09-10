@@ -9,7 +9,7 @@
 {% for i in range(len) %}
 	<tr>
 	{% for day in date[i] %}
-		<th>{{day[0].strftime("%m/%d")}}</th>
+		<th>{{day[0].strftime("%m/%d/%a")}}</th>
 	{% endfor %}
 	</tr>
 	<tr>
