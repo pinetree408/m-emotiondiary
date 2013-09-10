@@ -9,14 +9,14 @@
 {% for i in range(len) %}
 	<tr>
 	{% for day in date[i] %}
-		{% if day[0].weekday == 6 %}
+		{% if day[0].weekday() == 6 %}
 			<th><font color="red">{{day[0].strftime("%m/%d/%a")}}</font></th>
 		{% endif %}
-		{% if day[0].weekday == 5 %}
+		{% if day[0].weekday() == 5 %}
 			<th><font color="blue">{{day[0].strftime("%m/%d/%a")}}</font></th>
 		{% endif %}
-		{% if day[0].weekday != 6 %}
-			{% if day[0].weekday != 5 %}
+		{% if day[0].weekday() != 6 %}
+			{% if day[0].weekday() != 5 %}
 				<th>{{day[0].strftime("%m/%d/%a")}}</th>
 			{% endif %}
 		{% endif %}
