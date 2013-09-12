@@ -228,7 +228,9 @@ def calendar():
 
         user_fbID = facebook.get('me').data['id']
         userCache[sessionID].calendar.append(todayemotion)
+        userCache[sessionID].points = userCache[sessionID].points + 3
         User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
+        User.query.filter_by(facebookID=user_fbID).update(dict(points = userCache[sessionID].points))
         db.session.commit()
 
         return redirect(url_for('calendarresult'))
