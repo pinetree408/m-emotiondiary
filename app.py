@@ -246,24 +246,24 @@ def calendarresult():
     dayset = User.query.filter_by(facebookID=user_fbID).first().calendar
     
     month9 = []
-    month10 = []
-    month11 = []
-    month12 = []
+    #month10 = []
+    #month11 = []
+    #month12 = []
     for day in dayset:
         if day[0].strftime("%m") == "9":
             month9.append(day)
-        if day[0].strftime("%m") == "10":
-            month10.append(day)
-        if day[0].strftime("%m") == "11":
-            month11.append(day)
-        if day[0].strftime("%m") == "12":
-            month12.append(day)
+    #    if day[0].strftime("%m") == "10":
+    #        month10.append(day)
+    #    if day[0].strftime("%m") == "11":
+    #        month11.append(day)
+    #    if day[0].strftime("%m") == "12":
+    #        month12.append(day)
 
     year = []
     year.append(month9)
-    year.append(month10)
-    year.append(month11)
-    year.append(month12)
+    #year.append(month10)
+    #year.append(month11)
+    #year.append(month12)
 
     yearset = []
 
