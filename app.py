@@ -288,7 +288,7 @@ def calendarresult():
                 week4.append(day)
             elif day[0].day < 21:
                 week5.append(day)
-            elif sday[0].day < 25:
+            elif day[0].day < 25:
                 week6.append(day)
             elif day[0].day < 29:
                 week7.append(day)
@@ -324,7 +324,7 @@ def calendarresult():
 
     length = len(todaysmonth)
 
-    return render_template('sample.html', user=userCache[sessionID], test=dayset, month=todaysmonth, len=length ,userID=str(userCache[sessionID].id))
+    return render_template('sample.html', user=userCache[sessionID], test=dayset, month=month9, len=length ,userID=str(userCache[sessionID].id))
 
 
 @app.route('/about')
