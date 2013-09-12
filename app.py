@@ -356,7 +356,7 @@ def admin():
     sessionID = get_facebook_oauth_token()
 
     if not userCache[sessionID].id in adminUser:
-        return render_template('notAdmin.html', user=userCache[sessionID])
+        return render_template('notAdmin.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
     else:
         alluser = User.query.all()
         usertable = []
