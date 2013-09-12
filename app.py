@@ -250,7 +250,7 @@ def calendarresult():
     #month11 = []
     #month12 = []
     for day in dayset:
-        if day[0].strftime("%m") == "9":
+        if day[0].strftime("%m") == '9':
             month9.append(day)
     #    if day[0].strftime("%m") == "10":
     #        month10.append(day)
