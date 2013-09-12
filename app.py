@@ -103,9 +103,9 @@ def index():
 
             #Handling the base state of authenticated users
             if 'CESD1' in user.testscores.keys():
-                return render_template('returningUser.html', user = user)
+                return render_template('returningUser.html', user = user, userID=str(userCache[sessionID].id))
             else:
-                return render_template('firstTime.html', user = user)
+                return render_template('firstTime.html', user = user, userID=str(userCache[sessionID].id))
         else:
             return redirect(url_for('login'))
     else:
