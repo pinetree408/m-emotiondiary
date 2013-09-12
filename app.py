@@ -226,9 +226,13 @@ def calendar():
         todayemotion.append(index)
         todayemotion.append(memo)
 
+        tempUser = O.User(userCache[sessionID].name, userCache[sessionID].id, sessionID, userCache[sessionID].dateAdded, userCache[sessionID].friends,
+                               userCache[sessionID].points + 3,  userCache[sessionID].calendar, userCache[sessionID].locale, userCache[sessionID].target, userCache[sessionID].testscores,
+                               userCache[sessionID].tips, userCache[sessionID].data)
+
         user_fbID = facebook.get('me').data['id']
+        userCache[sessionID] = tempUser
         userCache[sessionID].calendar.append(todayemotion)
-        userCache[sessionID].points = userCache[sessionID].points + 3
         User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
         User.query.filter_by(facebookID=user_fbID).update(dict(points = userCache[sessionID].points))
         db.session.commit()
@@ -520,9 +524,9 @@ def userSession():
     # after this part there should be identical user data in each memory, DB and cache.
 
     if 'CESD1' in userCache[sessionID].testscores.keys():
-        return render_template('returningUser.html', user=userCache[sessionID])
+        return render_template('returningUser.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
     else:
-        return render_template('firstTime.html', user=userCache[sessionID])
+        return render_template('firstTime.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 @app.route('/login/authorized')
 @facebook.authorized_handler
