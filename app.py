@@ -1,4 +1,4 @@
--*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 #Packages to include
 from flask import Flask, request, session, url_for, redirect, render_template, abort, g, flash
 from flask.ext.sqlalchemy import SQLAlchemy
