@@ -316,7 +316,7 @@ def calendarresult():
         yearset.append(monthset)
 
     for month in yearset:
-        if month != null:
+        if len(month) > 0:
             if month[0][0][0].strftime("%m") == datetime.date.today().strftime("%m"):
                 todaysmonth = month
 
