@@ -327,19 +327,49 @@ def calendarresult():
         prev = datetime.date.today().month - 1
         next = datetime.date.today().month + 1
 
-        return render_template('calendarresult.html', user=userCache[sessionID], month=todaysmonth, len=length ,userID=str(userCache[sessionID].id), prev=prev, next=next)
+        return render_template('calendarresult.html', user=userCache[sessionID], monthhead=todaysmonth[0][0][0].strftime("%m"), month=todaysmonth, len=length ,userID=str(userCache[sessionID].id), prev=prev, next=next)
 
     if request.method == 'POST':
-        todaysmonth = []
 
-        for month in yearset:
-            if len(month) > 0:
-                if month[0][0][0].strftime("%m") == datetime.date.today().strftime("%m"):
-                    todaysmonth = month
+        prev = eval("request.form.get('prev')")
 
-        length = len(todaysmonth)
+        if prev:
+            prevmonth = int(prev.split('월')[0])
 
-        return render_template('calendarresult.html', user=userCache[sessionID], month=todaysmonth, len=length ,userID=str(userCache[sessionID].id))
+            prevsmonth = []
+
+            for month in yearset:
+                if len(month) > 0:
+                    if month[0][0][0].month == prevmonth:
+                        prevsmonth = month
+
+            length = len(prevsmonth)
+
+            prevprev = prev - 1
+            nextnext = prev + 1
+
+            return render_template('calendarresult.html', user=userCache[sessionID], monthhead=str(prevmonth), month=prevsmonth, len=length ,userID=str(userCache[sessionID].id), prev=prevprev, next=nextnext)
+
+        next = eval("request.form.get('next')")
+
+        if next:
+            nextmonth = int(next.split('월')[0])
+
+            nextsmonth = []
+
+            for month in yearset:
+                if len(month) > 0:
+                    if month[0][0][0].month == nextmonth:
+                        nextsmonth = month
+
+            length = len(nextsmonth)
+
+            prevprev = next - 1
+            nextnext = next + 1
+
+            return render_template('calendarresult.html', user=userCache[sessionID], monthhead=str(nextmonth), month=nextsmonth, len=length ,userID=str(userCache[sessionID].id), prev=prevprev, next=nextnext)
+
+        
 
 
 
