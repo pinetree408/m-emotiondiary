@@ -251,13 +251,13 @@ def calendarresult():
     month12 = []
     for day in dayset:
         if day[0].strftime("%m") == "9":
-            month9.append(unit)
+            month9.append(day)
         if day[0].strftime("%m") == "10":
-            month10.append(unit)
+            month10.append(day)
         if day[0].strftime("%m") == "11":
-            month11.append(unit)
+            month11.append(day)
         if day[0].strftime("%m") == "12":
-            month12.append(unit)
+            month12.append(day)
 
     year = []
     year.append(month9)
@@ -316,8 +316,9 @@ def calendarresult():
         yearset.append(monthset)
 
     for month in yearset:
-        if month[0][0][0].strftime("%m") == datetime.date.today().strftime("%m"):
-            todaysmonth = month
+        if month == null:
+            if month[0][0][0].strftime("%m") == datetime.date.today().strftime("%m"):
+                todaysmonth = month
 
     length = len(todaysmonth)
 
