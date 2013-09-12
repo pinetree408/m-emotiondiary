@@ -335,11 +335,11 @@ def calendarresult():
         prev = eval("request.form.get('prev')")
 
         if prev:
-            prevmonth = int(prev.split('월')[0])
+            prevmonth = int(prev.split(u'월')[0])
 
             prevsmonth = []
 
-            for month in yearset:
+            for month in yearset:  
                 if len(month) > 0:
                     if month[0][0][0].month == prevmonth:
                         prevsmonth = month
@@ -354,7 +354,7 @@ def calendarresult():
         next = eval("request.form.get('next')")
 
         if next:
-            nextmonth = int(next.split('월')[0])
+            nextmonth = int(next.split(u'월')[0])
 
             nextsmonth = []
 
