@@ -239,51 +239,89 @@ def calendar():
 
         return redirect(url_for('calendarresult'))
 
-@app.route('/calendarresult')
+@app.route('/calendarresult', methods=['GET', 'POST'])
 def calendarresult():
     sessionID = get_facebook_oauth_token()
     user_fbID = facebook.get('me').data['id']
-    temp = User.query.filter_by(facebookID=user_fbID).first().calendar
-    line1 = []
-    line2 = []
-    line3 = []
-    line4 = []
-    line5 = []
-    line6 = []
-    line7 = []
-    for sample in temp:
-        if sample[2] < 5:
-            line1.append(sample)
-        elif sample[2] < 9:
-            line2.append(sample)
-        elif sample[2] < 13:
-            line3.append(sample)
-        elif sample[2] < 17:
-            line4.append(sample)
-        elif sample[2] < 21:
-            line5.append(sample)
-        elif sample[2] < 25:
-            line6.append(sample)
-        else:
-            line7.append(sample)
-    calendarset = []
-    if len(line1) > 0:
-        calendarset.append(line1)
-    if len(line2) > 0:
-        calendarset.append(line2)
-    if len(line3) > 0:
-        calendarset.append(line3)
-    if len(line4) > 0:
-        calendarset.append(line4)
-    if len(line5) > 0:
-        calendarset.append(line5)
-    if len(line6) > 0:
-        calendarset.append(line6)
-    if len(line7) > 0:
-        calendarset.append(line7)
-    length = len(calendarset)
+    dayset = User.query.filter_by(facebookID=user_fbID).first().calendar
+    
+    month9 = []
+    month10 = []
+    month11 = []
+    month12 = []
+    for day in dayset:
+        if day[0].strftime("%m") == "9":
+            month9.append(unit)
+        if day[0].strftime("%m") == "10":
+            month10.append(unit)
+        if day[0].strftime("%m") == "11":
+            month11.append(unit)
+        if day[0].strftime("%m") == "12":
+            month12.append(unit)
 
-    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset, len=length, userID=str(userCache[sessionID].id))
+    year = []
+    year.append(month9)
+    year.append(month10)
+    year.append(month11)
+    year.append(month12)
+
+    yearset = []
+
+    for month in year:
+        week1 = []
+        week2 = []
+        week3 = []
+        week4 = []
+        week5 = []
+        week6 = []
+        week7 = []
+        week8 = []
+
+        for day in month:
+            if day[0].day < 5:
+                week1.append(day)
+            elif day[0].day < 9:
+                week2.append(day)
+            elif day[0].day < 13:
+                week3.append(day)
+            elif day[0].day < 17:
+                week4.append(day)
+            elif day[0].day < 21:
+                week5.append(day)
+            elif sday[0].day < 25:
+                week6.append(day)
+            elif day[0].day < 29:
+                week7.append(day)
+            else:
+                week8.append(day)
+
+        monthset = []
+        if len(week1) > 0:
+            monthset.append(week1)
+        if len(week2) > 0:
+            monthset.append(week2)
+        if len(week3) > 0:
+            monthset.append(week3)
+        if len(week4) > 0:
+            monthset.append(week4)
+        if len(week5) > 0:
+            monthset.append(week5)
+        if len(week6) > 0:
+            monthset.append(week6)
+        if len(week7) > 0:
+            monthset.append(week7)
+        if len(week8) > 0:
+            monthset.append(week8)
+
+        yearset.append(monthset)
+
+    for month in yearset:
+        if month[0][0].strftime("%m") == datetime.date.today().strftime("%m"):
+            todaysmonth = month
+
+    length = len(todaysmonth)
+
+    return render_template('calendarresult.html', user=userCache[sessionID], month=todaysmonth, len=length ,userID=str(userCache[sessionID].id))
 
 
 @app.route('/about')

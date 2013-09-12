@@ -4,11 +4,11 @@
 {% endblock %}
 
 {% block contentBoxKR %}
-<h2 class="centerText">{{date[0][0][0].strftime("%m")}}월 감정로그</h2>
+<h2 class="centerText">{{month[0][0].strftime("%m")}}월 감정로그</h2>
 <table border = "1">
 {% for i in range(len) %}
 	<tr>
-	{% for day in date[i] %}
+	{% for day in month[i] %}
 		{% if day[0].weekday() == 6 %}
 			<th><font color="red">{{day[0].strftime("%m/%d/%a")}}</font></th>
 		{% endif %}
@@ -23,7 +23,7 @@
 	{% endfor %}
 	</tr>
 	<tr>
-	{% for day in date[i] %}
+	{% for day in month[i] %}
 		{% if day[1] == 1 %}
 			<th><img src="/static/verybad.png" width="40%" height="100%"></th>
 		{% endif %}
@@ -45,7 +45,7 @@
 	{% endfor %}
 	</tr>
 	<tr>
-	{% for day in date[i] %}
+	{% for day in month[i] %}
 		<th><textarea row="7" col="20" style="width:90%" readonly="readonly">{{day[3]}}</textarea></th>
 	{% endfor %}
 	</tr>
