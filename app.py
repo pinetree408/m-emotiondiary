@@ -315,16 +315,19 @@ def calendarresult():
 
         yearset.append(monthset)
 
-    todaysmonth = []
+    if request.method == 'GET':
+        todaysmonth = []
 
-    for month in yearset:
-        if len(month) > 0:
-            if month[0][0][0].strftime("%m") == datetime.date.today().strftime("%m"):
-                todaysmonth = month
+        for month in yearset:
+            if len(month) > 0:
+                if month[0][0][0].strftime("%m") == datetime.date.today().strftime("%m"):
+                    todaysmonth = month
 
-    length = len(todaysmonth)
+        length = len(todaysmonth)
 
-    return render_template('calendarresult.html', user=userCache[sessionID], month=todaysmonth, len=length ,userID=str(userCache[sessionID].id))
+        return render_template('calendarresult.html', user=userCache[sessionID], month=todaysmonth, len=length ,userID=str(userCache[sessionID].id))
+
+    
 
 
 @app.route('/about')
