@@ -1,4 +1,3 @@
- -*- coding: utf-8 -*-
 #Packages to include
 from flask import Flask, request, session, url_for, redirect, render_template, abort, g, flash
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -335,7 +334,7 @@ def calendarresult():
         prev = eval("request.form.get('prev')")
 
         if prev:
-            prevmonth = int(prev.split('월')[0])
+            prevmonth = int(prev.split(u'월')[0])
 
             prevsmonth = []
 
@@ -354,7 +353,7 @@ def calendarresult():
         next = eval("request.form.get('next')")
 
         if next:
-            nextmonth = int(next.split('월')[0])
+            nextmonth = int(next.split(u'월')[0])
 
             nextsmonth = []
 
