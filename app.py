@@ -184,7 +184,7 @@ def calendar():
         if request.method == 'GET':
             if todaydate == lastdate:
                 #return redirect(url_for('calendarresult'))
-                return render_template('calendar.html', user=userCache[sessionID])
+                return render_template('calendar.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
             else:
                 if (todaydate.toordinal() - lastdate.toordinal()) > 1:
@@ -201,12 +201,12 @@ def calendar():
                         userCache[sessionID].calendar.append(blankemotion)
                     User.query.filter_by(facebookID=user_fbID).update(dict(calendar = userCache[sessionID].calendar))
                     db.session.commit()
-                    return render_template('calendar.html', user=userCache[sessionID])
+                    return render_template('calendar.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
                 else:
-                    return render_template('calendar.html', user=userCache[sessionID])
+                    return render_template('calendar.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
     else:
         if request.method == 'GET':
-            return render_template('calendar.html', user=userCache[sessionID])
+            return render_template('calendar.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 
     if request.method == 'POST':
@@ -283,18 +283,18 @@ def calendarresult():
         calendarset.append(line7)
     length = len(calendarset)
 
-    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset, len=length)
+    return render_template('calendarresult.html', user=userCache[sessionID], date=calendarset, len=length, userID=str(userCache[sessionID].id))
 
 
 @app.route('/about')
 def about():
     sessionID = get_facebook_oauth_token()
-    return render_template('about.html', user=userCache[sessionID])
+    return render_template('about.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 @app.route('/privacy')
 def userInfo():
     sessionID = get_facebook_oauth_token()
-    return render_template('userInfo.html', user=userCache[sessionID])
+    return render_template('userInfo.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 @app.route('/tips', methods=['GET', 'POST'])
 def tips():
@@ -306,7 +306,7 @@ def tips():
         tipNum = int(tipFile.readline()[3:].split()[0])
 
         if len(userCache[sessionID].tips) >= tipNum:        # Shown all tips
-            return render_template('viewedAlltip.html', user=userCache[sessionID])
+            return render_template('viewedAlltip.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
         randInt = 1
         while randInt in userCache[sessionID].tips:
@@ -320,7 +320,7 @@ def tips():
                                                 splittedTip[5].decode('utf8'), splittedTip[6].decode('utf8'), splittedTip[7].decode('utf8'),
                                                 map(lambda a:a.decode('utf8'), splittedTip[8:]))
                         # splittedTip[0]:Number, 1:Locale, 2:Tip, 3:Cite, 4:URL, 5:quotation, 6:question, 7:answer, 8~:wrong
-                        return render_template('newTips.html', questionNum = randInt, tip=newTip, user=userCache[sessionID])
+                        return render_template('newTips.html', questionNum = randInt, tip=newTip, user=userCache[sessionID], userID=str(userCache[sessionID].id))
                     else:
                         continue
                 else:
@@ -328,7 +328,7 @@ def tips():
                                              splittedTip[5].decode('utf8'), splittedTip[6].decode('utf8'), splittedTip[7].decode('utf8'),
                                             map(lambda a:a.decode('utf8'), splittedTip[8:]))
                     # splittedTip[0]:Number, 1:Locale, 2:Tip, 3:Cite, 4:URL, 5:quotation, 6:question, 7:answer, 8~:wrong
-                    return render_template('newTips.html', questionNum = randInt, tip=newTip, user=userCache[sessionID])
+                    return render_template('newTips.html', questionNum = randInt, tip=newTip, user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
     if request.method == 'POST':
         resp = eval("request.form.get('response')")
@@ -345,10 +345,10 @@ def tips():
                 User.query.filter_by(facebookID=user_fbID).update(dict(points = userCache[sessionID].points))
                 db.session.commit()   
 
-            return render_template('tipCorrect.html', user=userCache[sessionID])
+            return render_template('tipCorrect.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
         else:                   # wrong or no answer at all
-            return render_template('tipWrong.html', user=userCache[sessionID])
+            return render_template('tipWrong.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 @app.route('/admin')
 def admin():
@@ -388,7 +388,7 @@ def game():
     User.query.filter_by(facebookID=user_fbID).update(dict(points = userCache[sessionID].points))
     db.session.commit()   
 
-    return render_template('game.html', user=userCache[sessionID])
+    return render_template('game.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
@@ -402,11 +402,11 @@ def test():
     # currentTest = Tests[1]
 
     if currentTest.name in userCache[sessionID].testscores.keys():
-        return render_template('returningUser.html', user = userCache[sessionID])
+        return render_template('returningUser.html', user = userCache[sessionID], userID=str(userCache[sessionID].id))
 
     if request.method == 'GET':     
         #Load test
-        return render_template('tests/' + currentTest.url, testName=currentTest.name, user=userCache[sessionID])
+        return render_template('tests/' + currentTest.url, testName=currentTest.name, user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
     if request.method == 'POST':
                 
@@ -436,11 +436,11 @@ def test():
         db.session.commit()
 
         if scoresum < 10:
-            return render_template('feedback1.html', user=userCache[sessionID])
+            return render_template('feedback1.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
         elif 10 <= scoresum < 21:
-            return render_template('feedback2.html', user=userCache[sessionID])
+            return render_template('feedback2.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
         else:
-            return render_template('feedback3.html', user=userCache[sessionID])
+            return render_template('feedback3.html', user=userCache[sessionID], userID=str(userCache[sessionID].id))
 
 @app.route('/userSession/')
 def userSession():
