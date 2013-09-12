@@ -346,8 +346,8 @@ def calendarresult():
 
             length = len(prevsmonth)
 
-            prevprev = prev - 1
-            nextnext = prev + 1
+            prevprev = prevmonth - 1
+            nextnext = prevmonth + 1
 
             return render_template('calendarresult.html', user=userCache[sessionID], monthhead=str(prevmonth), month=prevsmonth, len=length ,userID=str(userCache[sessionID].id), prev=prevprev, next=nextnext)
 
@@ -365,8 +365,8 @@ def calendarresult():
 
             length = len(nextsmonth)
 
-            prevprev = next - 1
-            nextnext = next + 1
+            prevprev = nextmonth - 1
+            nextnext = nextmonth + 1
 
             return render_template('calendarresult.html', user=userCache[sessionID], monthhead=str(nextmonth), month=nextsmonth, len=length ,userID=str(userCache[sessionID].id), prev=prevprev, next=nextnext)
 
