@@ -324,7 +324,7 @@ def calendarresult():
 
     length = len(todaysmonth)
 
-    return render_template('sample.html', user=userCache[sessionID], test=month9, test1=year, test2=yearset, test3=todaysmonth, month=month9, len=length ,userID=str(userCache[sessionID].id))
+    return render_template('sample.html', user=userCache[sessionID], test3=todaysmonth, month=month9, len=length ,userID=str(userCache[sessionID].id))
 
 
 @app.route('/about')
