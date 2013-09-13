@@ -55,9 +55,11 @@
 감정로그가 없습니다.
 {% endif %}
 </table><br>
+<h2 class="centerText">
 <form id="calendar" action="{{ url_for('calendarresult') }}" method="POST">
 	<input type="submit" name="prev" value="{{prev}}월"><input type="submit" name="next" value="{{next}}월">
 </form>
 <br>
+</h2>
 <h2 class="centerText"><a href="{{ url_for('index') }}">메인 페이지로</a></h2>
 {% endblock %}
