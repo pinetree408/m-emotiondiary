@@ -349,12 +349,6 @@ def calendarresult():
             prevprev = prevmonth - 1
             nextnext = prevmonth + 1
 
-            if prevprev =< 0:
-                prevprev = prevprev + 12
-            
-            if nextnext <= 0:
-                nextnext = nextnext + 12
-
             return render_template('calendarresult.html', user=userCache[sessionID], monthhead=str(prevmonth), month=prevsmonth, len=length ,userID=str(userCache[sessionID].id), prev=prevprev, next=nextnext)
 
         next = eval("request.form.get('next')")
@@ -373,12 +367,6 @@ def calendarresult():
 
             prevprev = nextmonth - 1
             nextnext = nextmonth + 1
-
-            if prevprev >= 13:
-                prevprev = prevprev - 12
-
-            if nextnext >= 13:
-                nextnext = nextnext - 12
 
             return render_template('calendarresult.html', user=userCache[sessionID], monthhead=str(nextmonth), month=nextsmonth, len=length ,userID=str(userCache[sessionID].id), prev=prevprev, next=nextnext)
 
